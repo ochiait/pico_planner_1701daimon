@@ -20,4 +20,3 @@ $ rails db:setup
 ```text
 $ rails s
 ```
-# pico_planner_1701daimon

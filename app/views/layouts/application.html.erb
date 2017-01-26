@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>PicoPlanner</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag('pico_planner.ico') %>
+    <%= favicon_link_tag('clock256.png', rel: 'apple-touch-icon') %>
+  </head>
+
+  <body>
+    <header>
+      <h1><%= link_to 'PicoPlanner', :root %></h1>
+    </header>
+    <main>
+      <%= render 'layouts/flash_messages' %>
+      <%= yield %>
+    </main>
+    <footer>
+      &copy; 2016 Oiax Inc.
+    </footer>
+  </body>
+</html>
