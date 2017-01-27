@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'lessons/hello' => 'lessons#hello'
   resources :plan_items
   resources :users
+  resource :login
 end
