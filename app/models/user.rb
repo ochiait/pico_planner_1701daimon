@@ -2,11 +2,12 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  name            :string           not null
-#  password_digest :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                    :integer          not null, primary key
+#  name                  :string           not null
+#  password_digest       :string           not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  password_confirmation :srting
 #
 
 class User < ApplicationRecord
