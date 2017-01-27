@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   # 新規作成フォーム
   def new
     @user = User.new
