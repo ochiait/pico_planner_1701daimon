@@ -13,12 +13,20 @@
 
   <body>
     <header>
-        <h1><%= link_to 'PicoPlanner', :root %></h1>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1><%= link_to 'PicoPlanner', :root %></h1>
+          </div>
+          <div class="col text-right mt-2">
         <% if current_user == nil %>
         <%= link_to "ログイン", login_path %>
         <% else %>
         <%= link_to 'ログアウト', login_path, :confirm => 'ログアウトしますか？', :method => :delete %>
         <% end %>
+        </div>
+      </div>
+      </div>
     </header>
     <main>
       <%= render 'layouts/flash_messages' %>
