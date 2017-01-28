@@ -30,6 +30,11 @@ group :development do
   gem 'annotate'
 end
 
+group :test do
+  gem 'factory_girl_rails', '~> 4.7.0'
+  gem 'rails-controller-testing'
+end
+
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt', '~> 3.1.11'
 gem 'better_errors'
