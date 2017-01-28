@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127041243) do
+ActiveRecord::Schema.define(version: 20170124144603) do
 
   create_table "plan_items", force: :cascade do |t|
     t.string   "name",        null: false
@@ -22,11 +22,11 @@ ActiveRecord::Schema.define(version: 20170127041243) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                  null: false
-    t.string   "password_digest",       null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.         "password_confirmation"
+    t.string   "full_name",       null: false
+    t.string   "name",            null: false
+    t.string   "hashed_password"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

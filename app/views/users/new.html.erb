@@ -1,10 +1,20 @@
-<%= form_for @user do |f| %>
-<div class="card">
- <div class="card-block">
-  <%= render 'fields', f: f %>
-  <!-- <div class='form-group'> -->
-    <%= f.submit '追加', class: 'btn btn-success' %>
-  <!-- </div> -->
+<h1>新規登録/New</h1>
+<%= form_for @user do |form| %>
+  <%= form.label :full_name %>
+  <div class="form-group">
+    <%= form.text_field :full_name, style:"width:180px",class:"form-control" %>
   </div>
+  <%= form.label :name %>
+  <div class="form-group">
+    <%= form.text_field :name, style:"width:180px", class:"form-control" %>
   </div>
+  <%= form.label :password %>
+  <div class="form-group">
+    <%= form.password_field :password, style:"width:180px", class:"form-control" %>
+  </div>
+  <%= form.label :password_confirmation %>
+  <div class="form-group">
+    <%= form.password_field :password_confirmation, style:"width:180px", class:"form-control" %>
+  </div>
+  <p><%= form.submit class:"btn btn-primary" %></p>
 <% end %>

@@ -1,4 +1,5 @@
 class PlanItemsController < ApplicationController
+  before_action :login_required
   def index
     @plan_items = PlanItem.order(:starts_at)
   end

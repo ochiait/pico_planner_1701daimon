@@ -1,29 +1,50 @@
 <% @plan_items.each do |item| %>
   <%= render 'delete_confirmation', item: item %>
 <% end %>
-
 <div class='container-fluid plan-items'>
-  <% @plan_items.each do |item| %>
-    <div class='row'>
-      <div class='col-xs-8 col-md-4'>
-        <span class='plan-item-name'><%= link_to item.name, item %></span>
+  <% if current_user %>
+    <h2> welcome <%= current_user.name %>さん</h2>
+    <% @plan_items.each do |item| %>
+      <div class='row'>
+        <div class='col-xs-8 col-md-4'>
+          <span class='plan-item-name'><%= link_to item.name, item %></span>
+        </div>
+        <div class='col-xs-4 hidden-md-up text-xs-right toolbar'>
+          <%= render 'xs_toolbar', item: item %>
+        </div>
+        <div class='col-xs-12 col-md-5'>
+          <span class='plan-item-description'>
+            <% item.description.split("\n").each do |line| %>
+              <%= line %><br>
+            <% end %>
+          </span>
+        </div>
+        <div class='col-md-3 hidden-sm-down text-xs-right toolbar'>
+          <%= render 'md_toolbar', item: item %>
+        </div>
+        <div class='col-xs-12'>
+          <span class='plan-item-duration'><%= format_duration(item) %></span>
+        </div>
       </div>
-      <div class='col-xs-4 hidden-md-up text-xs-right toolbar'>
-        <%= render 'xs_toolbar', item: item %>
-      </div>
-      <div class='col-xs-12 col-md-5'>
-        <span class='plan-item-description'>
-          <% item.description.split("\n").each do |line| %>
-            <%= line %><br>
-          <% end %>
-        </span>
-      </div>
-      <div class='col-md-3 hidden-sm-down text-xs-right toolbar'>
-        <%= render 'md_toolbar', item: item %>
-      </div>
-      <div class='col-xs-12'>
-        <span class='plan-item-duration'><%= format_duration(item) %></span>
-      </div>
-    </div>
+    <% end %>
+  <% else %>
+    <h1>ログイン</h1>
+    <%= form_tag :session  do%>
+      <table>
+        <tr>
+          <td sytle="text-align: right">フルネーム:</td>
+          <td> <%= text_field_tag "full_name", "", style:"width:120px" %> </td>
+        </tr>
+        <tr>
+          <td sytle="text-align: right">パスワード:</td>
+          <td> <%= password_field_tag "password", "", style:"width:120px" %> </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align: center">
+            <%= submit_tag "login" %></td>
+        </tr>
+      </table>
+    <% end %>
+    <h2> <%= link_to "新規登録", new_user_path %></h2>
   <% end %>
 </div>
