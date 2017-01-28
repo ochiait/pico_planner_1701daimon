@@ -1,22 +1,24 @@
-# PicoPlanner: 簡易予定表管理システム
+# README
 
-これは『Ruby on Rails 5.0 初級②』の学習用 Rails アプリケーションです。
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## 稼働条件
+Things you may want to cover:
 
-* OS X v10.11 または Ubuntu 16.04
-* Ruby 2.3.1
+* Ruby version
 
-## インストール方法
+* System dependencies
 
-```text
-$ gem install bundler
-$ bundle install
-$ rails db:setup
-```
+* Configuration
 
-## 起動方法
+* Database creation
 
-```text
-$ rails s
-```
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

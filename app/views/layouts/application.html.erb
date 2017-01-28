@@ -1,39 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>PicoPlanner</title>
+    <title>MiniTest</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= favicon_link_tag('pico_planner.ico') %>
-    <%= favicon_link_tag('clock256.png', rel: 'apple-touch-icon') %>
   </head>
 
   <body>
-    <header>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <h1><%= link_to 'PicoPlanner', :root %></h1>
-          </div>
-          <div class="col text-right mt-2">
-        <% if current_user == nil %>
-        <%= link_to "ログイン", login_path %>
-        <% else %>
-        <%= link_to 'ログアウト', login_path, :confirm => 'ログアウトしますか？', :method => :delete %>
-        <% end %>
-        </div>
-      </div>
-      </div>
-    </header>
-    <main>
-      <%= render 'layouts/flash_messages' %>
-      <%= yield %>
-    </main>
-    <footer>
-      &copy; 2016 Oiax Inc.
-    </footer>
+    <%= yield %>
   </body>
 </html>
