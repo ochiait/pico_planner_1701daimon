@@ -8,6 +8,7 @@
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  password_confirmation :srting
+#  full_name             :srting
 #
 
 class User < ApplicationRecord
