@@ -11,6 +11,7 @@
 #
 
 class User < ApplicationRecord
+  has_many :plan_items, dependent: :destroy
   validates :name,  presence: true
   validates :password, presence: { on: :create },
   confirmation: { allow_blank: true }
