@@ -11,4 +11,11 @@
 #
 
 class Entry < ApplicationRecord
+  belongs_to :owner, class: "User", foreign_key: "user_id"
+
+  validates :name, presence: true, length: { maximum: 200 }
+  validates :description, :created_at, presence: true
+
+  # scope :full, ->(user) { where("user_id = user.id") }
+
 end
