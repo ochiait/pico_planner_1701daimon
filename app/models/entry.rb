@@ -16,6 +16,6 @@ class Entry < ApplicationRecord
   validates :name, presence: true, length: { maximum: 200 }
   validates :description, :created_at, presence: true
 
-  # scope :full, ->(user) { where("user_id = user.id") }
+  scope :full, ->(user) { where("user_id = user.id") }
 
 end
