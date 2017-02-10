@@ -8,7 +8,7 @@ class PlanItemsController < ApplicationController
       @plan_items = PlanItem.all
     end
     @plan_items = @plan_items.order(created_at: :desc)
-            # .paginate(page: params[:page], per_page: 5)
+            .paginate(page: params[:page], per_page: 5)
   end
 
   # 予定詳細
