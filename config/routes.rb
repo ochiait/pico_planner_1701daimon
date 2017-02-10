@@ -4,11 +4,10 @@ Rails.application.routes.draw do
   get 'lessons/register' => 'lessons#register'
   get 'lessons/hello' => 'lessons#hello'
 
-  resources :members do
-    resources :entries, only: [:index]
+  resources :users do
+    resources :plan_items, only: [:index]
   end
   resources :plan_items
   resources :users
   resource :login
-  resources :entries
 end

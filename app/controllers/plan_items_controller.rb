@@ -1,8 +1,17 @@
 class PlanItemsController < ApplicationController
+  # 予定一覧
   def index
-    @plan_items = PlanItem.order(:starts_at)
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @plan_items = @user.plan_items
+    else
+      @plan_items = PlanItem.all
+    end
+    @plan_items = @plan_items.order(created_at: :desc)
+            # .paginate(page: params[:page], per_page: 5)
   end
 
+  # 予定詳細
   def show
     @plan_item = PlanItem.find(params[:id])
   end
@@ -15,27 +24,37 @@ class PlanItemsController < ApplicationController
   end
 
   def edit
-    @plan_item = PlanItem.find(params[:id])
+    @plan_item = current_user.plan_items.find(params[:id])
   end
 
+  # 新規作成
   def create
-    PlanItem.create(plan_item_params)
-
-    redirect_to :plan_items, notice: '予定を追加しました。'
+    @plan_item = PlanItem.new(plan_item_params)
+    # 要確認
+    # @plan_item.user = current_user
+    if @plan_item.save
+      redirect_to @plan_item, notice: "予定を追加しました。"
+    else
+      render "new"
+    end
   end
 
+  # 更新
   def update
-    plan_item = PlanItem.find(params[:id])
-    plan_item.update_attributes(plan_item_params)
-
-    redirect_to :plan_items, notice: '予定を更新しました。'
+    @plan_item = current_user.plan_items.find(params[:id])
+    @plan_item.assign_attributes(plan_item_params)
+    if @plan_item.save
+      redirect_to @plan_item, notice: "予定を更新しました。"
+    else
+      render "edit"
+    end
   end
 
+  # 削除
   def destroy
-    plan_item = PlanItem.find(params[:id])
-    plan_item.destroy!
-
-    redirect_to :plan_items, notice: '予定を削除しました。'
+    @plan_item= current_user.plan_items.find(params[:id])
+    @plan_item.destroy
+    redirect_to :plan_items, notice: "予定を削除しました。"
   end
 
   private def plan_item_params
