@@ -13,7 +13,8 @@
 #
 
 class PlanItem < ApplicationRecord
-  belongs_to :user
+  has_many :participations, dependent: :destroy
+  has_many :users, through: :participations
 
   before_save do
     if starts_at_date_part && starts_at_time_part
