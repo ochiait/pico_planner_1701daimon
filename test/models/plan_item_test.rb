@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # == Schema Information
 #
 # Table name: plan_items
@@ -12,12 +13,17 @@
 #  user_id     :integer
 #
 
-FactoryGirl.define do
-  factory :plan_item do
-    sequence(:name) { |n| "予定#{n}" }
-    description "Blah, Blah, Blah."
-    user
-    starts_at 2.weeks.ago
-    ends_at 2.weeks.from_now
+require 'test_helper'
+
+class PlanItemTest < ActiveSupport::TestCase
+
+  def setup
+    @plan_item = FactoryGirl.create(:plan_item)
   end
+
+  test "factory girl" do
+    assert_equal "Blah, Blah, Blah.", @plan_item.description
+    assert @plan_item.user.kind_of?(User)
+  end
+
 end
