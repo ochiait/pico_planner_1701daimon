@@ -30,11 +30,11 @@ class PlanItemsController < ApplicationController
   # 新規作成
   def create
     @plan_item = PlanItem.new(plan_item_params)
-    # 要確認
-    # @plan_item.user = current_user
+    @plan_item.user = current_user
     if @plan_item.save
       redirect_to @plan_item, notice: "予定を追加しました。"
     else
+      Rails.logger.info @plan_item.errors.full_messages
       render "new"
     end
   end

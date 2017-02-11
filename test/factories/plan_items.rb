@@ -16,6 +16,7 @@ FactoryGirl.define do
   factory :plan_item do
     sequence(:name) { |n| "予定#{n}" }
     description "Blah, Blah, Blah."
+    user_id 1
     starts_at 2.weeks.ago
     ends_at 2.weeks.from_now
   end

@@ -6,7 +6,7 @@ class LoginsController < ApplicationController
   def create
     user = User.find_by_name params[:name]
     if user && user.authenticate(params[:pass])
-      session[:id] = user.id
+      session[:user_id] = user.id
       redirect_to :root
     else
       # flash変数にメッセージをセット
