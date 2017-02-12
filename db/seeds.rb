@@ -2,7 +2,31 @@ time0 = Time.current.beginning_of_day
 
 user = User.create!(
   name: 'taro',
-  full_name: 'Taro Yamada',
+  full_name: '山田太郎',
+  password: 'password'
+)
+
+user = User.create!(
+  name: 'hanako',
+  full_name: '佐藤花子',
+  password: 'password'
+)
+
+user = User.create!(
+  name: 'jiro',
+  full_name: '山本次郎',
+  password: 'password'
+)
+
+user = User.create!(
+  name: 'saburo',
+  full_name: '田中三郎',
+  password: 'password'
+)
+
+user = User.create!(
+  name: 'junko',
+  full_name: '鈴木純子',
   password: 'password'
 )
 
