@@ -1,14 +1,18 @@
 class PlanItemsController < ApplicationController
   # 予定一覧
   def index
-    if params[:user_id]
-      @user = User.find(params[:user_id])
+    puts "test1"
+    if current_user
+      @user = current_user
       @plan_items = @user.plan_items
+      puts "test2"
     else
       @plan_items = PlanItem.all
+      puts "test3"
     end
     @plan_items = @plan_items.order(created_at: :desc)
             .paginate(page: params[:page], per_page: 5)
+      puts "test4"
   end
 
   # 予定詳細

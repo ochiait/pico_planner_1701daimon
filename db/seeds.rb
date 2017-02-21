@@ -1,3 +1,4 @@
+# encoding: utf-8
 time0 = Time.current.beginning_of_day
 
 user = User.create!(

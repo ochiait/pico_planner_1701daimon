@@ -12,7 +12,8 @@
 
 class User < ApplicationRecord
   has_many :participations, dependent: :destroy
-  has_many :plan_items, through: :participations
+  has_many :plan_items
+
   validates :name,  presence: true
   validates :password, presence: { on: :create },
   confirmation: { allow_blank: true }
