@@ -1,0 +1,10 @@
+<%= form_for(@plan_item) do |f| %>
+  <div>
+    <%= collection_check_boxes(:user, :ids, User.all, :id, :full_name) do |b| %>
+      <%= b.label { b.check_box + b.text } %>
+    <% end %>
+  </div>
+  <div>
+    <%= f.submit value="更新"%>
+  </div>
+<% end %>
