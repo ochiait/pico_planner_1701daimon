@@ -18,6 +18,7 @@ class PlanItemsController < ApplicationController
 
   def new
     @plan_item = PlanItem.new
+    @plan_item.participants << current_user
     time0 = Time.current.beginning_of_hour
     @plan_item.starts_at = time0.advance(hours: 1)
     @plan_item.ends_at = time0.advance(hours: 2)
@@ -58,11 +59,13 @@ class PlanItemsController < ApplicationController
   end
 
   private def plan_item_params
-    params[:plan_item].permit(
+    p = params[:plan_item].permit(
       :name, :description,
       :starts_at_date_part, :starts_at_time_part,
       :ends_at_date_part, :ends_at_time_part,
       participant_ids: []
     )
+    p[:participant_ids] << current_user.id
+    p
   end
 end

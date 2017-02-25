@@ -18,7 +18,13 @@
   <%= f.label :participants, '参加者' %>
   <%#= collection_check_boxes(:participants, :ids, User.all, :id, :full_name,
     checked: @plan_item.participations.pluck(:user_id)) do |b| %>
-  <%= f.collection_check_boxes(:participant_ids, User.all, :id, :full_name) do |b| %>
+  <label>
+    <input type="checkbox" value="<%= current_user.id %>"
+    name="plan_item[participant_ids][]" disabled checked>
+    <%= current_user.full_name %>
+  </label>
+  <%= f.collection_check_boxes(:participant_ids,
+    User.where.not(id: current_user.id), :id, :full_name) do |b| %>
     <%= b.label { b.check_box + b.text } %>
   <% end %>
 </div>
