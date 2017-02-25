@@ -44,6 +44,26 @@ class PlanItemsController < ApplicationController
     @plan_item = current_user.plan_items.find(params[:id])
     @plan_item.assign_attributes(plan_item_params)
     if @plan_item.save
+      @plan_item.participants = User.where(id: params[:participants][:ids])
+      # @plan_item.participations.destroy_all # Easy solution
+      # ids0 = @plan_item.participations.pluck(:user_id)
+      # ids1 = params[:participants][:ids].map(&:to_i).reject { |e| e == 0 }
+      # a = ids1 - ids0
+      # b = ids0 - ids1
+      # raise [ids0, ids1, a, b].inspect
+      # a.each do |id|
+      #   user = User.find_by(id: id)
+      #   if user
+      #     @plan_item.participants << user
+      #   end
+      # end
+
+      # b.each do |id|
+      #   user = User.find_by(id: id)
+      #   if user
+      #     @plan_item.participants.destroy(user)
+      #   end
+      # end
       redirect_to @plan_item, notice: "予定を更新しました。"
     else
       render "edit"

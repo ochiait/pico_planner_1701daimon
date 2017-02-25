@@ -42,9 +42,9 @@
   <div class='row'>
     <div class='col-xs-12 col-md-4 bg-info text-md-right'>参加者</div>
     <div class='col-xs-12 col-md-8'>
-
-    <%= render 'participations/form' %>
-
+      <% @plan_item.participants.each do |user| %>
+        <%= user.full_name %>
+      <% end %>
     </div>
   </div>
 </div>
