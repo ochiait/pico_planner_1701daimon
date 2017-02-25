@@ -12,6 +12,10 @@
 #  updated_at  :datetime         not null
 #  user_id     :integer
 #
+# Indexes
+#
+#  index_plan_items_on_user_id  (user_id)
+#
 
 require 'test_helper'
 
