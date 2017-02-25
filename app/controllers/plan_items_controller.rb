@@ -45,7 +45,7 @@ class PlanItemsController < ApplicationController
     @plan_item.assign_attributes(plan_item_params)
     if @plan_item.save
       # @plan_item.participants = User.where(id: params[:participants][:ids])
-      @plan_item.participant_ids = params[:participants][:ids]
+      # @plan_item.participant_ids = params[:participants][:ids]
       redirect_to @plan_item, notice: "予定を更新しました。"
     else
       render "edit"
@@ -75,7 +75,8 @@ class PlanItemsController < ApplicationController
     params[:plan_item].permit(
       :name, :description,
       :starts_at_date_part, :starts_at_time_part,
-      :ends_at_date_part, :ends_at_time_part
+      :ends_at_date_part, :ends_at_time_part,
+      participant_ids: []
     )
   end
 end

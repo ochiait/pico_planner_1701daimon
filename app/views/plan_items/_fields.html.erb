@@ -16,8 +16,9 @@
 </div>
 <div class='form-group'>
   <%= f.label :participants, '参加者' %>
-  <%= collection_check_boxes(:participants, :ids, User.all, :id, :full_name,
+  <%#= collection_check_boxes(:participants, :ids, User.all, :id, :full_name,
     checked: @plan_item.participations.pluck(:user_id)) do |b| %>
+  <%= f.collection_check_boxes(:participant_ids, User.all, :id, :full_name) do |b| %>
     <%= b.label { b.check_box + b.text } %>
   <% end %>
 </div>
