@@ -44,8 +44,6 @@ class PlanItemsController < ApplicationController
     @plan_item = current_user.plan_items.find(params[:id])
     @plan_item.assign_attributes(plan_item_params)
     if @plan_item.save
-      # @plan_item.participants = User.where(id: params[:participants][:ids])
-      # @plan_item.participant_ids = params[:participants][:ids]
       redirect_to @plan_item, notice: "予定を更新しました。"
     else
       render "edit"
@@ -57,18 +55,6 @@ class PlanItemsController < ApplicationController
     @plan_item= current_user.plan_items.find(params[:id])
     @plan_item.destroy
     redirect_to :plan_items, notice: "予定を削除しました。"
-  end
-
-  # 参加者追加
-  def participate
-    # @plan_item = PlanItem.new(plan_item_params)
-    # @plan_item.user = current_user
-    # if @plan_item.save
-    #   redirect_to @plan_item, notice: "予定を追加しました。"
-    # else
-    #   Rails.logger.info @plan_item.errors.full_messages
-    #   render "new"
-    # end
   end
 
   private def plan_item_params
