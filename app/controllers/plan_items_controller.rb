@@ -3,7 +3,7 @@ class PlanItemsController < ApplicationController
   def index
     if current_user
       @user = current_user
-      @plan_items = @user.plan_items
+      @plan_items = @user.participating_plan_items
     else
       @plan_items = PlanItem.all
     end

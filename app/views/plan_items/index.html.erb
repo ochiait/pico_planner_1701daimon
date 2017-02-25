@@ -9,7 +9,7 @@
         <span class='plan-item-name'><%= link_to item.name, item %></span>
       </div>
       <div class='col-xs-4 hidden-md-up text-xs-right toolbar'>
-        <%= render 'xs_toolbar', item: item %>
+        <%= render 'xs_toolbar', item: item if item.user_id == current_user.id %>
       </div>
       <div class='col-xs-12 col-md-5'>
         <span class='plan-item-description'>
@@ -19,7 +19,7 @@
         </span>
       </div>
       <div class='col-md-3 hidden-sm-down text-xs-right toolbar'>
-        <%= render 'md_toolbar', item: item %>
+        <%= render 'md_toolbar', item: item if item.user_id == current_user.id %>
       </div>
       <div class='col-xs-12'>
         <span class='plan-item-duration'><%= format_duration(item) %></span>

@@ -12,6 +12,8 @@
 
 class User < ApplicationRecord
   has_many :participations, dependent: :destroy
+  has_many :participating_plan_items, through: :participations,
+    source: :plan_item
   has_many :plan_items
 
   validates :name,  presence: true
